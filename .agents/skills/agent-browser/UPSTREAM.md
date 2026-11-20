@@ -1,0 +1,1 @@
+Source: [vercel-labs/agent-browser](https://github.com/vercel-labs/agent-browser/tree/4605d82cfc20dbd051f57a631b5b7130e32141a5/skills/agent-browser), commit 4605d82cfc20dbd051f57a631b5b7130e32141a5. The project-local discovery skill uses the separately installed agent-browser CLI. The upstream license is included alongside the unchanged SKILL.md.

@@ -1,0 +1,647 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.0298080444336,
+          38.9000244140625
+        ]
+      },
+      "properties": {
+        "id": "washington-dc:171092",
+        "label": "Obstacle",
+        "region": "Penn Quarter",
+        "street_id": 26367,
+        "capture_date": "2016-10",
+        "report_time": "2017-12-08T07:43:32.287Z",
+        "votes": {
+          "Human": {},
+          "AI": {}
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.02948760986328,
+          38.90007019042969
+        ]
+      },
+      "properties": {
+        "id": "washington-dc:171098",
+        "label": "Obstacle",
+        "region": "Penn Quarter",
+        "street_id": 26368,
+        "capture_date": "2016-10",
+        "report_time": "2017-12-08T07:43:46.298Z",
+        "votes": {
+          "Human": {},
+          "AI": {}
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.02950286865234,
+          38.900062561035156
+        ]
+      },
+      "properties": {
+        "id": "washington-dc:171099",
+        "label": "Obstacle",
+        "region": "Penn Quarter",
+        "street_id": 26368,
+        "capture_date": "2016-10",
+        "report_time": "2017-12-08T07:43:48.323Z",
+        "votes": {
+          "Human": {},
+          "AI": {}
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.02947998046875,
+          38.900123596191406
+        ]
+      },
+      "properties": {
+        "id": "washington-dc:171100",
+        "label": "Obstacle",
+        "region": "Penn Quarter",
+        "street_id": 26368,
+        "capture_date": "2016-10",
+        "report_time": "2017-12-08T07:43:50.893Z",
+        "votes": {
+          "Human": {},
+          "AI": {}
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.03443145751953,
+          38.9038200378418
+        ]
+      },
+      "properties": {
+        "id": "washington-dc:261643",
+        "label": "Obstacle",
+        "region": "Downtown",
+        "street_id": 22137,
+        "capture_date": "2017-06",
+        "report_time": "2018-05-15T17:15:29.827Z",
+        "votes": {
+          "Human": {},
+          "AI": {}
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.03014373779297,
+          38.901451110839844
+        ]
+      },
+      "properties": {
+        "id": "washington-dc:262163",
+        "label": "Obstacle",
+        "region": "Downtown",
+        "street_id": 6339,
+        "capture_date": "2017-10",
+        "report_time": "2018-05-24T22:54:55.359Z",
+        "votes": {
+          "Human": {},
+          "AI": {}
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.02864074707031,
+          38.90270233154297
+        ]
+      },
+      "properties": {
+        "id": "washington-dc:262206",
+        "label": "Obstacle",
+        "region": "Downtown",
+        "street_id": 26325,
+        "capture_date": "2017-09",
+        "report_time": "2018-05-24T23:02:19.661Z",
+        "votes": {
+          "Human": {},
+          "AI": {}
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.03253173828125,
+          38.902610778808594
+        ]
+      },
+      "properties": {
+        "id": "washington-dc:262225",
+        "label": "Obstacle",
+        "region": "Downtown",
+        "street_id": 26374,
+        "capture_date": "2017-09",
+        "report_time": "2018-05-24T23:06:55.653Z",
+        "votes": {
+          "Human": {},
+          "AI": {}
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.03260040283203,
+          38.90260696411133
+        ]
+      },
+      "properties": {
+        "id": "washington-dc:262227",
+        "label": "Obstacle",
+        "region": "Downtown",
+        "street_id": 26374,
+        "capture_date": "2017-09",
+        "report_time": "2018-05-24T23:07:09.008Z",
+        "votes": {
+          "Human": {},
+          "AI": {}
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.03279113769531,
+          38.902610778808594
+        ]
+      },
+      "properties": {
+        "id": "washington-dc:262228",
+        "label": "Obstacle",
+        "region": "Downtown",
+        "street_id": 26374,
+        "capture_date": "2017-09",
+        "report_time": "2018-05-24T23:07:16.065Z",
+        "votes": {
+          "Human": {},
+          "AI": {}
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.0329818725586,
+          38.90261459350586
+        ]
+      },
+      "properties": {
+        "id": "washington-dc:262229",
+        "label": "Obstacle",
+        "region": "Downtown",
+        "street_id": 26374,
+        "capture_date": "2017-09",
+        "report_time": "2018-05-24T23:07:20.93Z",
+        "votes": {
+          "Human": {},
+          "AI": {}
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.03314208984375,
+          38.902610778808594
+        ]
+      },
+      "properties": {
+        "id": "washington-dc:262230",
+        "label": "Obstacle",
+        "region": "Downtown",
+        "street_id": 26374,
+        "capture_date": "2017-09",
+        "report_time": "2018-05-24T23:07:28.498Z",
+        "votes": {
+          "Human": {},
+          "AI": {}
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.0333251953125,
+          38.90261459350586
+        ]
+      },
+      "properties": {
+        "id": "washington-dc:262231",
+        "label": "Obstacle",
+        "region": "Downtown",
+        "street_id": 26374,
+        "capture_date": "2017-09",
+        "report_time": "2018-05-24T23:07:32.546Z",
+        "votes": {
+          "Human": {},
+          "AI": {}
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.03340148925781,
+          38.902618408203125
+        ]
+      },
+      "properties": {
+        "id": "washington-dc:262232",
+        "label": "Obstacle",
+        "region": "Downtown",
+        "street_id": 26374,
+        "capture_date": "2017-09",
+        "report_time": "2018-05-24T23:07:38.774Z",
+        "votes": {
+          "Human": {},
+          "AI": {}
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.0326156616211,
+          38.90263748168945
+        ]
+      },
+      "properties": {
+        "id": "washington-dc:262280",
+        "label": "Obstacle",
+        "region": "Downtown",
+        "street_id": 26374,
+        "capture_date": "2017-09",
+        "report_time": "2018-05-24T23:15:53.21Z",
+        "votes": {
+          "Human": {},
+          "AI": {}
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.0326156616211,
+          38.90260314941406
+        ]
+      },
+      "properties": {
+        "id": "washington-dc:262281",
+        "label": "Obstacle",
+        "region": "Downtown",
+        "street_id": 26374,
+        "capture_date": "2017-09",
+        "report_time": "2018-05-24T23:15:57.295Z",
+        "votes": {
+          "Human": {},
+          "AI": {}
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.03287506103516,
+          38.90266036987305
+        ]
+      },
+      "properties": {
+        "id": "washington-dc:262282",
+        "label": "Obstacle",
+        "region": "Downtown",
+        "street_id": 26374,
+        "capture_date": "2017-09",
+        "report_time": "2018-05-24T23:16:16.904Z",
+        "votes": {
+          "Human": {},
+          "AI": {}
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.032958984375,
+          38.90263366699219
+        ]
+      },
+      "properties": {
+        "id": "washington-dc:262283",
+        "label": "Obstacle",
+        "region": "Downtown",
+        "street_id": 26374,
+        "capture_date": "2017-09",
+        "report_time": "2018-05-24T23:16:17.991Z",
+        "votes": {
+          "Human": {},
+          "AI": {}
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.032958984375,
+          38.90260696411133
+        ]
+      },
+      "properties": {
+        "id": "washington-dc:262284",
+        "label": "Obstacle",
+        "region": "Downtown",
+        "street_id": 26374,
+        "capture_date": "2017-09",
+        "report_time": "2018-05-24T23:16:18.929Z",
+        "votes": {
+          "Human": {},
+          "AI": {}
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.03474426269531,
+          38.90386199951172
+        ]
+      },
+      "properties": {
+        "id": "washington-dc:262291",
+        "label": "Obstacle",
+        "region": "Downtown",
+        "street_id": 21016,
+        "capture_date": "2017-07",
+        "report_time": "2018-05-24T23:17:42.755Z",
+        "votes": {
+          "Human": {},
+          "AI": {}
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.02825927734375,
+          38.9027099609375
+        ]
+      },
+      "properties": {
+        "id": "washington-dc:262705",
+        "label": "Obstacle",
+        "region": "Downtown",
+        "street_id": 26325,
+        "capture_date": "2017-09",
+        "report_time": "2018-06-01T05:40:01.307Z",
+        "votes": {
+          "Human": {},
+          "AI": {}
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.02967071533203,
+          38.89999771118164
+        ]
+      },
+      "properties": {
+        "id": "washington-dc:27658",
+        "label": "Obstacle",
+        "region": "Penn Quarter",
+        "street_id": 26369,
+        "capture_date": "2015-09",
+        "report_time": "2016-08-30T15:54:02.317Z",
+        "votes": {
+          "Human": {},
+          "AI": {}
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.02725982666016,
+          38.90422058105469
+        ]
+      },
+      "properties": {
+        "id": "washington-dc:28643",
+        "label": "Obstacle",
+        "region": "Logan Circle/Shaw",
+        "street_id": 293,
+        "capture_date": "2014-06",
+        "report_time": "2016-08-31T15:03:35.067Z",
+        "votes": {
+          "Human": {},
+          "AI": {}
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.02715301513672,
+          38.90385818481445
+        ]
+      },
+      "properties": {
+        "id": "washington-dc:28653",
+        "label": "Obstacle",
+        "region": "Downtown",
+        "street_id": 4644,
+        "capture_date": "2014-06",
+        "report_time": "2016-08-31T15:05:13.16Z",
+        "votes": {
+          "Human": {},
+          "AI": {}
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.02714538574219,
+          38.90411376953125
+        ]
+      },
+      "properties": {
+        "id": "washington-dc:28654",
+        "label": "Obstacle",
+        "region": "Logan Circle/Shaw",
+        "street_id": 293,
+        "capture_date": "2014-06",
+        "report_time": "2016-08-31T15:05:20.591Z",
+        "votes": {
+          "Human": {},
+          "AI": {}
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.02947998046875,
+          38.90313720703125
+        ]
+      },
+      "properties": {
+        "id": "washington-dc:55473",
+        "label": "Obstacle",
+        "region": "Downtown",
+        "street_id": 26328,
+        "capture_date": "2014-05",
+        "report_time": "2016-11-16T02:51:50.513Z",
+        "votes": {
+          "Human": {},
+          "AI": {
+            "Agree": 1
+          }
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.03455352783203,
+          38.90083312988281
+        ]
+      },
+      "properties": {
+        "id": "washington-dc:57627",
+        "label": "Obstacle",
+        "region": "Downtown",
+        "street_id": 2645,
+        "capture_date": "2014-06",
+        "report_time": "2016-11-17T16:00:15.127Z",
+        "votes": {
+          "Human": {},
+          "AI": {}
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.03179931640625,
+          38.90261459350586
+        ]
+      },
+      "properties": {
+        "id": "washington-dc:57683",
+        "label": "Obstacle",
+        "region": "Downtown",
+        "street_id": 26373,
+        "capture_date": "2014-06",
+        "report_time": "2016-11-17T16:17:11.017Z",
+        "votes": {
+          "Human": {},
+          "AI": {}
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.0347671508789,
+          38.902610778808594
+        ]
+      },
+      "properties": {
+        "id": "washington-dc:57780",
+        "label": "Obstacle",
+        "region": "Downtown",
+        "street_id": 22994,
+        "capture_date": "2014-04",
+        "report_time": "2016-11-17T16:34:24.881Z",
+        "votes": {
+          "Human": {},
+          "AI": {
+            "Unsure": 1
+          }
+        }
+      }
+    }
+  ]
+}

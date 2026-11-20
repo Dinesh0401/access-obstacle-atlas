@@ -1,0 +1,41 @@
+{
+  "seed": 9,
+  "epochs": 18,
+  "test_tiles": 250,
+  "test_positives": 38,
+  "models": {
+    "majority": {
+      "average_precision": 0.8436015816773488,
+      "recall_at_0.5": 0.23684210526315788,
+      "false_positive_rate_at_0.5": 0.0,
+      "brier_score": 0.08212380265637989
+    },
+    "fusion": {
+      "average_precision": 0.8865384455757543,
+      "recall_at_0.5": 0.5,
+      "false_positive_rate_at_0.5": 0.0,
+      "brier_score": 0.054884124614069704
+    }
+  },
+  "paired_ap_difference_cluster_bootstrap_95pct": {
+    "groups": 25,
+    "interval": [
+      0.00544984690870459,
+      0.09324627193358738
+    ],
+    "valid_replicates": 1000
+  },
+  "synthetic_localization": {
+    "scenes": 20,
+    "ground_truth_objects": 84,
+    "generator_seed": 702,
+    "object_ap_iou_0.1": 0.5391872747107757,
+    "object_ap_iou_0.5": 0.0
+  },
+  "provenance": "procedural synthetic-only patch classification",
+  "generator_seed": 411,
+  "anchor_tiles": 180,
+  "train_tiles": 550,
+  "train_unobserved": 98,
+  "train_disputed": 75
+}

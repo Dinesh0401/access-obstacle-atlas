@@ -6,3 +6,5 @@ runtime/
 *.sqlite*
 .atlas/
 .streamlit/secrets.toml
+.ruff_cache/
+dataset/
