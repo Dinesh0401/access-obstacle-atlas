@@ -41,3 +41,16 @@ Set ATLAS_MODEL_CONFIG to a JSON file to serve a different checkpoint. It must n
     {"checkpoint":"trained.npz","sha256":"<actual digest>","name":"Field pilot v1","training_data":"<collection and version>","status":"<evaluation status>","scope":"<supported obstacle and geography>","threshold":0.5}
 
 Restart the server after changing a deployment's checkpoint or configuration.
+
+## Optional pretrained field object proposals
+
+Install requirements-field.txt and run:
+
+    python -m vision.field --prepare
+    python -m vision.field --image data_tools/field-example.jpg
+
+This CPU detector finds candidate physical objects in real photos. It uses MobileNet-SSD trained on PASCAL VOC 2007/2012. The supported review labels are bicycle, bus, car, chair, table, motorcycle, potted plant and sofa. People are excluded. Detection of a vehicle in the road does not establish that it blocks a sidewalk. Kerb ramps, tactile paving, step height and usable clearance are outside the pretrained label set. A volunteer inspects the photo and reports a physical attribute separately.
+
+The local implementation scores a whole frame and five overlapping square views. It maps proposals back to the EXIF-corrected frame and suppresses boxes of the same class with IoU greater than 0.4. The fixed score cutoff 0.5 refers to VOC object confidence and has not been calibrated for accessibility. On the attributed field-example.jpg the multi-view pass returned three motorcycle proposals. This verifies end-to-end inference on one field image; no independent field box labels or accuracy estimate exist yet. The single whole-frame pass on this photo returned zero proposals, illustrating sensitivity to scale. The crop settings were explored on this photo.
+
+The optional preparation command downloads two revision-pinned, SHA-256-checked assets, approximately 23 MB total. Set ATLAS_FIELD_MODEL_DIR to override the cache directory. Detection has no network dependency after preparation. The upstream checkpoint and configuration come from the [MobileNet-SSD repository](https://github.com/chuanqi305/MobileNet-SSD/tree/bb17b6c3eef36d80be441ae8e5339be66e8e3b7a). The upstream repository includes its [MIT license](https://github.com/chuanqi305/MobileNet-SSD/blob/bb17b6c3eef36d80be441ae8e5339be66e8e3b7a/LICENSE).

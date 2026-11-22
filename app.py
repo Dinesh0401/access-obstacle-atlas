@@ -10,6 +10,7 @@ from PIL import Image
 from records import AtlasStore
 from ui.scene import evidence_image, example_crossing
 from ui.theme import apply_theme
+from vision import field
 from vision.api import MODEL_CARD, detect
 
 st.set_page_config(page_title="Access Obstacle Atlas", page_icon="◩", layout="wide")
@@ -104,9 +105,10 @@ def show_reviews(photo_id):
 
 
 @st.cache_data(max_entries=40, show_spinner=False)
-def proposals(content):
+def proposals(content, field_objects=False):
     with Image.open(BytesIO(content)) as image:
-        return detect(image.convert("RGB"))
+        detector = field.detect_objects if field_objects else detect
+        return detector(image.convert("RGB"))
 
 
 def region_review(photo_id, marks):
@@ -167,6 +169,7 @@ def review(photos):
     )
     choices = {
         None: "Illustrated example · Market crossing",
+        -1: "Field photograph · Tactile paving and parked scooter",
         **{p["id"]: f"{p['title']} · #{p['id']}" for p in photos},
     }
     current = st.session_state.get("scene_id")
@@ -186,18 +189,37 @@ def review(photos):
             st.subheader("Market crossing")
             st.caption("Illustrated example · hand-marked regions")
         else:
-            content = store.get_image(ident)
-            image = Image.open(BytesIO(content)).convert("RGB")
-            st.subheader(next(p["title"] for p in photos if p["id"] == ident))
-            st.caption(
-                f"Uploaded street photo · {MODEL_CARD['name']} · {MODEL_CARD['status']}"
+            is_field_example = ident == -1
+            content = (
+                (
+                    Path(__file__).parent / "data_tools" / "field-example.jpg"
+                ).read_bytes()
+                if is_field_example
+                else store.get_image(ident)
             )
+            image = Image.open(BytesIO(content)).convert("RGB")
+            st.subheader(
+                "Tactile paving and parked scooter"
+                if is_field_example
+                else next(p["title"] for p in photos if p["id"] == ident)
+            )
+            field_objects = field.available() and st.toggle(
+                "Show pretrained physical-object detections", key=f"field-{ident}"
+            )
+            if field_objects:
+                st.caption(
+                    "MobileNet-SSD · PASCAL VOC object categories. Check whether the object actually obstructs the path."
+                )
+            else:
+                st.caption(
+                    f"Street photograph · {MODEL_CARD['name']} · {MODEL_CARD['status']}"
+                )
             with st.spinner("Locating candidate regions…"):
-                results = proposals(content)
+                results = proposals(content, field_objects)
             marks = [(f"{r['label']} {r['score']:.2f}", r["box"]) for r in results]
         overlay = st.toggle("Show evidence regions", value=True)
         active_box = None
-        if ident is not None and st.checkbox(
+        if ident not in (None, -1) and st.checkbox(
             "Review a specific region", key=f"inspect-{ident}"
         ):
             active_box = region_review(ident, marks)
@@ -243,6 +265,22 @@ def review(photos):
                 "Two reviewers can agree a ramp exists and disagree about whether someone can use it. Record each obstacle separately."
             )
             st.caption("Open Add photo to review an actual image.")
+        elif ident == -1:
+            st.subheader("Field notes")
+            st.write(
+                "A tactile guidance strip leads toward a parked motor scooter. Inspect the wheels and the strip, then consider which aspects of the route are visible in this single frame."
+            )
+            st.caption("Amenoc · September 2017 · CC0 · no adjudicated object boxes")
+            st.link_button(
+                "Photograph and attribution",
+                "https://commons.wikimedia.org/wiki/File:Tactile_paving,_with_obstructions.jpg",
+            )
+            if st.button("Add this image to the shared review queue"):
+                open_scene(
+                    store.add_photo(
+                        content, "Tactile paving and scooter · Amenoc (2017)"
+                    )
+                )
         else:
             if active_box is not None:
                 vote_on_region(ident, active_box)
@@ -341,6 +379,12 @@ def research():
             }
             for name, values in results["models"].items()
         ]
+    )
+    localization = results["synthetic_localization"]
+    st.caption(
+        f"Object localization on {localization['ground_truth_objects']} generated objects: "
+        f"AP at IoU 0.5 = {localization['object_ap_iou_0.5']:.3f}. "
+        "The coarse grid often extends beyond the object."
     )
     st.markdown("### What still needs field evidence")
     st.write(

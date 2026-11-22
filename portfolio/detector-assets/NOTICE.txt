@@ -1,0 +1,7 @@
+TensorFlow.js 4.22.0 and @tensorflow-models/coco-ssd 2.2.3 are distributed under Apache License 2.0.
+https://github.com/tensorflow/tfjs
+https://github.com/tensorflow/tfjs-models/tree/master/coco-ssd
+Weights: TensorFlow.js SSDLite MobileNet v2, COCO-trained. Official TFJS model publisher:
+https://storage.googleapis.com/tfjs-models/savedmodel/ssdlite_mobilenet_v2/model.json
+The manifest in portfolio/assets.json pins every distributed file by SHA-256. Atlas filters the
+COCO output classes and normalizes boxes. A field reviewer must inspect accessibility effects.

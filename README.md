@@ -4,6 +4,8 @@ A Python computer-vision workbench for reviewing sidewalk barriers. A curb ramp 
 
 [Open the public portfolio demo](https://access-obstacle-atlas.bubblybobcat3.chatgpt.site) · [Export reviewed regions for training](records/README.md)
 
+The public site runs COCO-trained SSDLite MobileNet v2 on the selected photograph in a browser worker using the TensorFlow.js CPU backend. Review detected objects or draw a missing region, record the access impact, and revisit the observation on this device. Portfolio reviews stay in the current browser. The shared queue, training pipeline and patch-CNN experiment run in the Python service below. To serve the public interface locally, run `python portfolio/prepare_assets.py`, then `python -m http.server --directory portfolio 8000`.
+
 ## Try the review desk
 
 Use Python 3.12. From the repository root:
@@ -17,10 +19,12 @@ streamlit run app.py
 
 Open the illustrated crossing, toggle its marked regions, then add a photo you have permission to share. Open the same scene under two reviewer aliases and record opposite verdicts about the same obstacle. Open **Community atlas** and filter the review queue for conflicting reports. The original illustration uses hand-marked regions. Uploaded photos run through the bundled CNN.
 
+For the optional real-photo object detector, install prerequisites with `python -m pip install -r requirements-field.txt` and run `python -m vision.field --prepare`. On the review desk, select the field photograph and enable pretrained physical-object detections. A motorcycle box identifies a vehicle. A reviewer still needs to judge whether it blocks the guidance strip. The [field photograph credits](data_tools/field-example.md) document the source.
+
 For a single-instance deployment with persistent storage:
 
 ```sh
-docker build -t access-obstacle-atlas .
+docker build --build-arg FIELD_OBJECTS=1 -t access-obstacle-atlas .
 docker run --rm -p 8501:8501 -v atlas-data:/app/data access-obstacle-atlas
 ```
 

@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#173530">
+  <title>Access Obstacle Atlas · Street photo review</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a href="#inspection" class="skip">Skip to photo inspection</a>
+<header class="mast"><a class="brand" href="./"><span aria-hidden="true" class="brand-mark">⌖</span> Access Obstacle Atlas</a><a class="repo" href="https://github.com/Dinesh0401/access-obstacle-atlas">GitHub source</a></header>
+<main>
+  <section class="introduction"><div><p class="eyebrow">Accessibility mapping / Field review</p><h1>Street photo review<span>.</span></h1><p class="subtitle">Inspect the objects in a street photo and record what they mean for someone using the footpath.</p></div>
+    <div class="controls"><button type="button" id="upload">Choose a photo</button><input hidden type="file" id="photo" accept="image/jpeg,image/png,image/webp"><button type="button" id="field">Open field photo</button></div>
+  </section>
+  <section id="inspection" aria-label="Photo inspection" tabindex="-1" class="workspace">
+    <article class="viewer"><div class="panel-head"><div><p class="eyebrow">Image inspection</p><h2 id="photo-name">Field photograph</h2></div><label class="switch"><input type="checkbox" id="overlay" checked> Show boxes</label></div>
+      <div class="stage"><div id="plane"><canvas id="source" width="1" height="1" role="img" aria-label="Street photograph under review"></canvas><div id="boxes" aria-label="Objects on photo"></div><div id="draft" hidden aria-hidden="true"></div></div></div>
+      <div class="image-meta"><span id="dimensions"></span><span id="photo-credit" hidden>Photo by Amenoc, 2017 · CC0 · <a href="https://commons.wikimedia.org/wiki/File:Tactile_paving,_with_obstructions.jpg">Original</a></span></div>
+    </article>
+    <aside class="review"><p class="eyebrow">Human review</p><h2>Review objects</h2><p id="status" role="status">Opening field photograph…</p><button hidden type="button" id="retry">Retry detection</button>
+      <div id="review-tools" hidden>
+        <label class="field-label" for="object-list">Object or marked region</label><select id="object-list"></select>
+        <p id="position" class="position"></p>
+        <fieldset><legend>Does this object obstruct the walking surface?</legend>
+          <div class="vote"><label><input type="radio" name="verdict" value="obstructs"> It obstructs the path</label><label><input type="radio" name="verdict" value="clear"> The path looks clear around it</label><label><input type="radio" name="verdict" value="uncertain"> Cannot tell from this photo</label></div>
+        </fieldset>
+        <p id="progress" aria-live="polite"></p>
+      </div>
+      <details id="manual-pane" hidden><summary>Mark a missed obstacle</summary><form id="manual-form">
+        <p>Drag across the photo while this panel is open, or enter its edges as percentages from the left and top.</p>
+        <label class="field-label">Obstacle name <input required maxlength="60" id="manual-name" placeholder="e.g. raised paving slab"></label>
+        <div class="coordinates"><label>Left % <input id="left" type="number" min="0" max="100" step="0.1" required></label><label>Top % <input id="top" type="number" min="0" max="100" step="0.1" required></label><label>Right % <input id="right" type="number" min="0" max="100" step="0.1" required></label><label>Bottom % <input id="bottom" type="number" min="0" max="100" step="0.1" required></label></div>
+        <button type="submit">Save marked region</button><p role="status" id="manual-message"></p>
+      </form></details>
+      <div class="local-note"><strong>On-device review</strong><p>The photo is processed in your browser. Your object reviews are saved on this device.</p></div>
+    </aside>
+  </section>
+  <details><summary>How to interpret a detection</summary><p>Each box locates a visual object and gives its detector score. A reviewer looks at the surrounding pavement to judge obstruction. Empty results and low scores leave accessibility unresolved. A photograph records one place at one moment.</p></details>
+</main>
+<footer>Access Obstacle Atlas <span>Computer vision research</span></footer>
+<script type="module" src="review.mjs"></script>
+</body>
+</html>
