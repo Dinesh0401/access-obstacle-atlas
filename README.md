@@ -61,3 +61,7 @@ python -m pytest -q
 The [model and manifest guide](vision/README.md) defines the probability model, training format and limitations. The [field data guide](data_tools/README.md) records the source, retrieval command and usage terms.
 
 A field evaluation needs consented photographs, independently reviewed positive and negative regions, and entire streets held out before training. Compare models on the same held-out locations, count rare positives and missed barriers, score region overlap, and record how often someone must inspect a proposal. Measure whether users can make a better decision from the evidence. Agreement with a synthetic label cannot answer that question.
+
+### Invite another reviewer
+
+In the Python review desk, open a submitted photo and select **Review a specific region**. Outline a region and save an observation. Copy the resulting page URL, which contains both the photo and region IDs. A second reviewer can open that URL on the same running instance, enter a different alias, and submit an independent observation. The Community atlas places conflicting reports first. Use a shared server with persistent storage when reviewers are on different devices.

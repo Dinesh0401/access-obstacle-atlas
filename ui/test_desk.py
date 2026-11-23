@@ -76,3 +76,24 @@ def test_region_and_historical_layer(tmp_path, monkeypatch):
     assert len(app.dataframe[0].value) > 0
     app.radio(key="navigation").set_value("Research").run()
     assert not app.exception
+
+
+def test_shared_region_keeps_two_reviewers(tmp_path, monkeypatch):
+    monkeypatch.setenv("ATLAS_DB", str(tmp_path / "atlas.sqlite3"))
+    db = AtlasStore()
+    buf = BytesIO()
+    Image.new("RGB", (120, 80), "gray").save(buf, "PNG")
+    photo = db.add_photo(buf.getvalue(), "Crossing")
+    region = db.add_region(photo, [0.1, 0.2, 0.6, 0.7])
+    db.report_region(region, "first", "present")
+    app = AppTest.from_file(str(Path(__file__).parents[1] / "app.py"))
+    app.query_params.update(photo=str(photo), region=str(region))
+    app.run()
+    assert not app.exception
+    assert app.selectbox[1].value == f"Saved region {region}"
+    app.text_input[0].set_value("second")
+    app.selectbox[2].set_value("absent")
+    app.button[0].click().run()
+    assert not app.exception
+    summary = db.region_summaries(photo)[0]
+    assert (summary["present"], summary["absent"]) == (1, 1)

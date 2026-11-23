@@ -111,8 +111,10 @@ def proposals(content, field_objects=False):
         return detector(image.convert("RGB"))
 
 
-def region_review(photo_id, marks):
-    with st.expander("Inspect or annotate a specific region"):
+def region_review(photo_id, marks, shared_region=None):
+    with st.expander(
+        "Inspect or annotate a specific region", expanded=shared_region is not None
+    ):
         st.write(
             "Choose a model tile, revisit an existing region, or describe a missed obstacle with a custom box."
         )
@@ -125,9 +127,22 @@ def region_review(photo_id, marks):
         boxes.update(
             {f"Candidate {i} · {label}": box for i, (label, box) in enumerate(marks, 1)}
         )
+        choices = ["Custom region", *boxes]
+        target = f"Saved region {shared_region}"
         which = st.selectbox(
-            "Region to inspect", ["Custom region", *boxes], key=f"region-{photo_id}"
+            "Region to inspect",
+            choices,
+            index=choices.index(target) if target in choices else 0,
+            key=f"region-{photo_id}-{shared_region}",
         )
+        if shared_region is not None and target not in boxes:
+            st.warning("That shared region is unavailable for this photo.")
+        if which.startswith("Saved region "):
+            st.link_button(
+                "Open shareable review link",
+                f"?photo={photo_id}&region={which.split()[-1]}",
+            )
+
         if which == "Custom region":
             st.caption("Set boundaries as a percentage from the top or left edge.")
             horizontal = st.slider("Left and right (%)", 0, 100, (25, 75))
@@ -158,7 +173,9 @@ def vote_on_region(photo_id, box):
             except ValueError as exc:
                 st.error(str(exc))
             else:
-                st.session_state.notice = "Region observation saved."
+                st.query_params.update(photo=photo_id, region=region_id)
+                st.session_state.notice = "Region observation saved. Copy the page URL to invite another reviewer."
+
                 st.rerun()
 
 
@@ -181,6 +198,13 @@ def review(photos):
         format_func=choices.get,
     )
     st.session_state.scene_id = ident
+    shared_region = (
+        st.query_params.get("region")
+        if ident is not None and str(ident) == st.query_params.get("photo")
+        else None
+    )
+    if ident is not None and ident > 0:
+        st.link_button("Open shareable photo link", f"?photo={ident}")
     left, right = st.columns([1.8, 1], gap="large")
     with left:
         if ident is None:
@@ -220,9 +244,11 @@ def review(photos):
         overlay = st.toggle("Show evidence regions", value=True)
         active_box = None
         if ident not in (None, -1) and st.checkbox(
-            "Review a specific region", key=f"inspect-{ident}"
+            "Review a specific region",
+            value=shared_region is not None,
+            key=f"inspect-{ident}-{shared_region}",
         ):
-            active_box = region_review(ident, marks)
+            active_box = region_review(ident, marks, shared_region)
         visible_marks = (
             [("Selected region", active_box)] if active_box is not None else marks
         )
@@ -391,6 +417,18 @@ def research():
         "Evaluate on independently adjudicated street photographs with held-out neighborhoods. Compare against majority-vote supervision, count missed rare obstacles, and measure review workload at matched recall. A model score alone cannot establish whether a crossing is usable."
     )
 
+
+if "scene_id" not in st.session_state and "photo" in st.query_params:
+    try:
+        requested_photo = int(st.query_params["photo"])
+    except ValueError:
+        requested_photo = 0
+    if requested_photo > 0 and any(
+        p["id"] == requested_photo for p in store.list_photos()
+    ):
+        st.session_state.scene_id = requested_photo
+    else:
+        st.warning("This shared photo is unavailable on this instance.")
 
 if "next_page" in st.session_state:
     st.session_state.navigation = st.session_state.pop("next_page")
